@@ -3,9 +3,43 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Calibration</title>
   </head>
   <body>
-    Welcome
+    <div ng-app="myApp" ng-controller="calibration" ng-init="numberOfIterations=7" class="container-xl text-center">
+      <input type='number' min='0' ng-model='numberOfIterations'>
+      <br>
+      <br>
+      <table class='table-bordered table-hover col-lg-12 col-md-12 col-xl-12'>
+        <thead class='thead-dark'>
+          <tr>
+            <th>Ring #</th>
+            <th>thickness (mm)</th>
+            <th>length (mm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="x in [] | range:numberOfIterations">
+            <td>{{ x }}</td>
+            <td><input type="number" ng-model="ring_thinkness" min="0"></td>
+            <td id='offset{{ x }}'>{{ ring_thinkness }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script src="myApp.js"></script>
+    <script src="myCtrl.js"></script>
   </body>
 </html>
